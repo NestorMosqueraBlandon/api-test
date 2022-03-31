@@ -1,0 +1,22 @@
+{
+  "name": "api-node-fastify-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc -w",
+    "dev": "nodemon ./api-node-fastify-typescript/build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.27.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.6.3"
+  }
+}

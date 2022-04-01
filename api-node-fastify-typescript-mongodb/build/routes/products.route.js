@@ -12,16 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connection = void 0;
-const mongoose_1 = __importDefault(require("mongoose"));
-const connection = (fastify, options) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const db = yield mongoose_1.default.connect(options.uri);
-        console.log("Connected to database to", db.connections[0].name);
-    }
-    catch (error) {
-        fastify.log.error(error);
-    }
+const list_1 = __importDefault(require("../controllers/products/list"));
+const ProductRoute = (server, options) => __awaiter(void 0, void 0, void 0, function* () {
+    server.get('/products', {}, list_1.default);
 });
-exports.connection = connection;
-exports.default = exports.connection;
+exports.default = ProductRoute;

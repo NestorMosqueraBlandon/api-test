@@ -8,20 +8,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connection = void 0;
-const mongoose_1 = __importDefault(require("mongoose"));
-const connection = (fastify, options) => __awaiter(void 0, void 0, void 0, function* () {
+const Product_1 = require("../models/Product");
+const ProductController = (request, replay) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const db = yield mongoose_1.default.connect(options.uri);
-        console.log("Connected to database to", db.connections[0].name);
+        const products = yield Product_1.Product.find({});
+        console.log(products.length);
+        return replay.code(200).send(products);
     }
     catch (error) {
-        fastify.log.error(error);
+        console.error(error);
+        return replay.code(500);
     }
 });
-exports.connection = connection;
-exports.default = exports.connection;
+exports.default = ProductController;

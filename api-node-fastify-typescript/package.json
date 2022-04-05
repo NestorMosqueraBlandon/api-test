@@ -5,8 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc -w",
-    "dev": "nodemon ./api-node-fastify-typescript/build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./api-node-fastify-typescript/build/index.js"
   },
   "keywords": [],
   "author": "",

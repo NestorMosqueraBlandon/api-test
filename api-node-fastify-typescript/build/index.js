@@ -13,14 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
-const server = (0, fastify_1.default)({
+// FastifyReply == Response Express
+const application = (0, fastify_1.default)({
     logger: true
 });
 const port = 8300;
-server.get('/status', (request, reply) => {
+application.get('/status', (request, reply) => {
     reply.send("Server is working");
 });
-server.route({
+application.route({
     method: "GET",
     url: '/',
     handler: (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
@@ -29,10 +30,10 @@ server.route({
 });
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield server.listen(port);
+        yield application.listen(port);
     }
     catch (error) {
-        server.log.error(error);
+        application.log.error(error);
         process.exit(1);
     }
 });

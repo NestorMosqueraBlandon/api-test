@@ -1,10 +1,11 @@
-import {FastifyInstance, FastifyPluginOptions, FastifyPluginAsync} from 'fastify'
-import fp from 'fastify-plugin';
-import Create from '../controllers/products/create';
+import {FastifyInstance, FastifyPluginOptions, FastifyPluginAsync, RouteOptions} from 'fastify'
 import GetAll from '../controllers/products/list';
 
-const ProductRoute: FastifyPluginAsync = async (server: FastifyInstance, options: FastifyPluginOptions) =>{
-    server.get('/products', {}, GetAll);
+
+export const fetchAll: RouteOptions = {
+    url: '/products',
+    method: 'GET',
+    handler: GetAll
 }
 
-export default ProductRoute;
+export default fetchAll

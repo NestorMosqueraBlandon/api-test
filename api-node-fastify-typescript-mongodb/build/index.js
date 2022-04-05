@@ -14,15 +14,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
 const database_1 = __importDefault(require("./database"));
-const products_route_1 = __importDefault(require("./routes/products.route"));
 const fastify_cors_1 = __importDefault(require("fastify-cors"));
+const products_route_1 = __importDefault(require("./routes/products.route"));
+const admins_route_1 = __importDefault(require("./routes/admins.route"));
 const port = process.env.PORT || 7000;
 const server = (0, fastify_1.default)({
     logger: true
 });
 const uri = "mongodb+srv://user:api12345@cluster0.2tqpl.mongodb.net/apirest?retryWrites=true&w=majority";
-(0, products_route_1.default)(server, {});
 (0, database_1.default)(server, { uri });
+server.route(products_route_1.default);
+server.route(admins_route_1.default);
 server.register(fastify_cors_1.default);
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
